@@ -348,6 +348,7 @@ h6 {
     margin: 0 auto;
 }
 
+<<<<<<< HEAD
 /*menu*/
 .menu{
 float:left;
@@ -378,4 +379,36 @@ text-transform: uppercase;
 .loginpage{
 
     
+=======
+.imgsedang {
+    width: 2--px;
+    height: auto;
+    position: relative;
+    float: left;
+    border: 0;
+    overflow: hidden;
+}
+
+.imgsedang img{
+    width: 100%l
+
+}
+
+.imghapus {
+    position: absolute;
+    right: 10px;
+    bottom: : 10px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background: #333;
+    color: #FFF;
+    font-size: 24px;
+}
+
+.imghapus a:hover {
+    color: yellow;
+
+>>>>>>> d4ff312 (fitur edit konten)
 }

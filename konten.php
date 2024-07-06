@@ -27,22 +27,68 @@ if (isset($_POST['add'])) {
         $gambar = ''; // Set default value if no image uploaded
     }
 
+    if($_POST['aksi']=='tambah'){
     global $connect;
-    $sql = "INSERT INTO berita (Judul, Isi, Kategori, Gambar, Teks, Tanggal, Viewnum, Updateby, Post_type, Terbit)
-            VALUES ('" . $_POST['judul'] . "', '" . $_POST['isi'] . "', '" . $_POST['kategori'] . "', '" . $gambar . "', '"
-             . $_POST['teks'] . "', '" . date("Y-m-d H:i:s") . "', '0', '" . $_SESSION['loginadmin'] . "', 'berita', '" . $_POST['terbit'] . "')";
-    $hasil = mysqli_query($connect, $sql);
+        $sql = "INSERT INTO berita (Judul, Isi, Kategori, Gambar, Teks, Tanggal, Viewnum, Updateby, Post_type, Terbit)
+                VALUES ('" . $_POST['judul'] . "', '" . $_POST['isi'] . "', '" . $_POST['kategori'] . "', '" . $gambar . "', '"
+                . $_POST['teks'] . "', '" . date("Y-m-d H:i:s") . "', '0', '" . $_SESSION['loginadmin'] . "', 'berita', '" . $_POST['terbit'] . "')";
+        $hasil = mysqli_query($connect, $sql);
+    }
+
+    if($_POST['aksi']=='edit'){
+        global $connect; 
+        $sql= mysqli_query($connect, "UPDATE berita SET Judul='".$_POST['judul']"', Isi='".$_POST['isi']"', Kategori='".$_POST['kategori']"', Gambar='".$_POST['gambar']"',
+         Teks='".$_POST['teks']"', Terbit='".$_POST['terbit']."' WHERE ID='".$_POST['id']."'");
+         ,,,'$gambar',,'".date'("Y-m-d H:i:s") ."','0','". $_SESSION['loginadmin'].,'berita',
+    }
+}
+
+if(isset($_GET['act']) && $_GET['act']== 'edit'){
+    $id=(int)$_GET['id'];
+    global $connect;
+
+    $sql= mysqli_query($connect, "SELECT * FROM berita WHERE ID= '$id'");
+    while ($b= mysqli_fetch_array($sql)){
+        extract($b);
+
+        $judul = $Judul;
+        $kategori = $Kategori;
+        $isi= $Isi;
+        $gambar = $Gambar;
+        $teks = $Teks;
+        $tanggal= $Tangga;
+        $updateby = $Updateby;
+        $terbit = $Terbit;
+        if (isset($_GET['hapusgambar']) && $_GET['hapusgambar']=='yes'){
+            unlink('../' . $gambar)
+            $sqlupdate= mysqli_query($connect, "UPDATE berita SET Gambar='' WHERE ID= '$id'");
+            echo'<meta http-eqiv="REFRESH" content="0;url=./?mod=berita&act=edit&id='.$id.'" />';
+   
+        }
+    }
+}
+if(isset($_GET['act']) && $_GET['act']== 'hapus'){
+    $id=(int)$_GET['id'];
+    global $connect;
+    while ($b= mysqli_fetch_array($sql)){
+        $gbr = $b['Gambar'];
+        unlink('../'.$gambar);
+    }
+
+    $hapus=mysqli_query($connect,"DELETE FROM berita WHERE ID='$id' ")
 }
 ?>
 
 <div class="w100">
     <form action="./?mod=berita" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?=$id?>"> 
+        <input type="hidden" name="aksi" value="<?=($id? 'edit' :'tambah');?>">
         <fieldset>
             <legend>Unggah Konten</legend>
 
             <div class="formNama">
                 <label>Judul</label>:<br>
-                <input type="text" name="judul" placeholder="Judul Konten" value="" size="40">
+                <input type="text" name="judul" placeholder="Judul Konten" value="<?= $judul ?>" size="40">
             </div>
 
             <div class="formNama">
@@ -53,7 +99,7 @@ if (isset($_POST['add'])) {
                     global $connect;
                     $hasil = mysqli_query($connect, "SELECT * FROM kategori WHERE Terbit='1' ORDER BY ID DESC");
                     while ($k = mysqli_fetch_array($hasil)) {
-                        echo '<option value="' . $k['alias'] . '">' . $k['Kategori'] . '</option>';
+                        echo '<option value="' . $k['alias'] . '" '.($kategori==$k['alias'] ?' selected' :'').'>' . $k['Kategori'] . '</option>';
                     }
                     ?>
                 </select>
@@ -61,28 +107,42 @@ if (isset($_POST['add'])) {
 
             <div class="formNama">
                 <label>Isi Konten</label>:<br>
-                <textarea name="isi" cols="80" rows="8"></textarea>
+                <textarea name="isi" cols="80" rows="8"><?=isi?></textarea>
             </div>
 
             <div class="formNama">
                 <label>Gambar</label>:<br>
-                <input type="file" name="gambar">
+                <?php 
+                if($gambar && $id){
+                    echo'
+                    <div class="imgsedang"> 
+                    <input type="hidden" name="gambar" value="$gambar">
+                    <img src="'.URL_SITUS.$gambar.'" width="200">
+                    <div class="imghapus"><a href="./?mod=berita&act=edit&hapusgambar=yes&id='.$id.'">x</a></div>
+                    </div>
+                    '
+                } else {
+                    echo'<input type="file" name="gambar">'
+                }
+                ?>
             </div>
+            <div class="clear pd10"></div>
 
             <div class="formNama">
                 <label>Teks</label>:<br>
-                <textarea name="teks" cols="30" rows="5"></textarea>
+                <textarea name="teks" cols="30" rows="5"><?=$teks?></textarea>
             </div>
 
             <div class="formNama">
                 <label>Terbitkan</label>:<br>
                 <select name="terbit">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
+                    <option value="1" <?=(($terbit==1) ? 'selected' :'')?>>Yes</option>
+                    <option value="0" <?=(($terbit==0) ? 'selected' :'')?>>No</option>
                 </select>
             </div>
             
-            <input type="submit" name="add" value="Tambah" class="btn-primary">
+            <input type="submit" name="add" value="<?=(($id) ? 'Edit' :'Tambah')?>"
+            class="btn-primary">
 
         </fieldset>
     </form>
@@ -113,8 +173,8 @@ if (isset($_POST['add'])) {
             <div class="w20 fl"><?=$Kategori;?></div>
             <div class="w20 fl"><?=$Tanggal;?></div>
             <div class="w10 fl">
-                <a href="#" class="btn-primary">edit</a>
-                <a href="#" class="btn-red pd5">hapus</a>   
+                <a href="./?mod=berita&act=edit&id=<?=$ID;?>" class="btn-primary">edit</a>
+                <a href="./?mod=berita&act=hapus&id=<?=$ID;?>" class="btn-red pd5">hapus</a>   
 
             </div>
         </div>
