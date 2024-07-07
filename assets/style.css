@@ -347,64 +347,85 @@ h6 {
     width: 70%;
     margin: 0 auto;
 }
+
+/*menu*/
 .menu{
-    float:left;
     font-size: 12px;
-    
     text-transform: uppercase;
-    }
-    .menu a{
-        color :#333;
-        padding: 2px 15px;
-    }
-    
-    /*form area*/
-    .formnama{
-        font-size: 12px;
-        color: #666;
-        margin: 3px 0 10px 0;
-    }
-    
-    /*list*/
-    .list{
-        margin: 0 0 10px 0;
-        padding: 5px 0;
-        border-bottom: 1px dotted #999;
-    }
-    
-    /*login page*/
-    .loginpage{
-    
-        
-    =======
-
-.imgsedang {
-    width: 2--px;
-    height: auto;
-    position: relative;
-    float: left;
-    border: 0;
-    overflow: hidden;
+}
+.menu a{
+    color :#333;
+    padding: 2px 15px;
 }
 
-.imgsedang img{
-    width: 100%l
+/*form area*/
+.formnama{
+    font-size: 12px;
+    color: #666;
+    margin: 3px 0 10px 0;
+}
+.input[type="text"].form100 {
+    width: 100%;
+}
+.input[type="text"] {
+    padding: 3px 0;
+    border: 1px solid #999;
+}
+.input[type="submit"] {
+    box-shadow: 0px 0px 10px #ccc;
+    border: 1px solid #999;
+    padding: 5px 8px;
+    color: #333;
+    box-sizing: border-box;
+    border-radius: 3PX;
+}
+legend {
+    font-size: 12px;
+    color: #317947;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+fieldset{
+    border: 1px solid #317947;
+    border-radius: 3px;
+    border-bottom: 10;
+}
+    
+    
 
+
+/*list*/
+.list{
+    margin: 0 0 10px 0;
+    padding: 5px 0;
+    border-bottom: 1px dotted #999;
 }
 
-.imghapus {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    border-radius: 50%;
-    background: #333;
-    color: #FFF;
-    font-size: 24px;
+/*login page*/
+.loginpage{
+    background: #ccc;
+    padding: 20px;
+    margin: 30px auto;
+    font-size: 12PX;
+    border-radius: 4PX;
+}
+.loginpage .user{
+    margin-bottom: 10px;
+}
+.loginpage .input{
+    width: 100%;
+    padding: 5px 0 0 ;
+    margin: 3px 0 0 0 ;
+    background: #efefef;
+    border: 1px solid #999;
+
+}
+.loginpage input[type="submit"]{
+    padding: 10px;
 }
 
+<<<<<<< HEAD
 .imghapus a:hover {
     color: yellow;
 
@@ -458,4 +479,30 @@ footer{
     text-align: center;
     background: #222;
     color: ;
+=======
+/* button */
+.btn {
+    padding: 3px 5px;
+    margin: 0px 3px;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 8px #333;
+}
+.btn-primary {
+    background: #73b7fc;
+    color: #fff;
+}
+.btn-primary :hover{
+    background: #6babed;
+    color: #333;
+}
+.btn-red {
+    background: #73b7fc;
+    color: #fff;
+}
+.btn-red :hover{
+    background: #6babed;
+    color: #333;
+>>>>>>> a86886fac4c7a953b270912d7c7cfd2669b25627
 }
