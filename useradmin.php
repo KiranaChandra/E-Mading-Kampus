@@ -100,9 +100,9 @@ if (isset($_GET['act'])) {
             echo '
             <div class="list">
                 <div class="w10 fl">' . $i++ . '</div>
-                <div class="w30 fl">' . $r['username'] . '</div>
-                <div class="w20 fl">' . $r['nama'] . '</div>
-                <div class="w20 fl">' . $r['email'] . '</div>
+                <div class="w30 fl">' . $r['Username'] . '</div>
+                <div class="w20 fl">' . $r['Nama'] . '</div>
+                <div class="w20 fl">' . $r['Email'] . '</div>
                 <div class="w20 fl">
                     <a href="?mod=useradmin&act=edit&id=' . $r['ID'] . '" class="small">EDIT</a> 
                     <a href="?mod=useradmin&act=hapus&id=' . $r['ID'] . '" class="small">HAPUS</a>

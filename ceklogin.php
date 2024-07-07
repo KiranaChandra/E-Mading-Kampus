@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../koneksi.php");
+include("koneksi.php");
 
 if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($connect, $_POST['username']);
