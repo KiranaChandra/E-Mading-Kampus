@@ -5,6 +5,10 @@ define('DBPASS', '');
 define('DBNAME', 'emk');
 
 define('URL_SITUS', 'http://localhost/E-Mading_Kampus/');
+define('PATH_LOGO', 'image');
+define('FILE_LOGO', 'logo.png');
+define('FILE_ICON', 'icon.png');
+
 
 $connect = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
 

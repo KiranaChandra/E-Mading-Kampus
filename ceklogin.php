@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if  ($_GET['keluar']=='yes'){
+    session_destroy();
+    header("Location:index.php");
+}
 include("../koneksi.php");
 
 if (isset($_POST['submit'])) {
@@ -41,18 +46,22 @@ if (empty($_SESSION['loginadmin'])) {
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div class="logininpage">
+<div class="w20 fn loginpage">
     <div class="logo">
         <!-- Tempat logo jika diperlukan -->
     </div>
 
     <form action="" method="POST">
-        <label>Username</label>
-        <input type="text" name="username" placeholder="Username" required>
+        <div class="user">
+            <label>Username</label><br>
+            <input type="text" name="username" placeholder="Username" required>
+        </div>
 
-        <label>Password</label>
-        <input type="password" name="password" required>
-
+        <div class="user">
+            <label>Password</label><br>
+            <input type="password" name="password" required>
+        </div>
+        
         <input type="submit" name="submit" value="Login">
     </form>
 </div>

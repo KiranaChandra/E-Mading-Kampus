@@ -14,11 +14,11 @@ include("ceklogin.php");
             <hr>
             <div class="menu pd10">
                 <a href="#">Home</a>
-                <a href="#">Kategori</a>
-                <a href="#">Berita</a>
-                <a href="#">Konfigurasi</a>
+                <a href="?mod=kategori">Kategori</a>
+                <a href="?mod=berita">Berita</a>
+                <a href="?mod=konfigurasi">Konfigurasi</a>
                 <a href="?mod=useradmin">User Admin</a>
-                <a href="logout.php" class="fr">Log Out</a> <!-- Tautan logout -->
+                <a href="?keluar=yes" class="fr">Log Out</a> <!-- Tautan logout -->
             </div>
             <div class="clear"></div>
         </div>
@@ -28,6 +28,15 @@ include("ceklogin.php");
             switch ($mod) {
                 case 'useradmin':
                     include("useradmin.php");
+                    break;
+                case 'konfigurasi':
+                    include("konfigurasi.php");
+                    break;
+                case 'berita':
+                    include("berita.php");
+                    break;
+                case 'kategori':
+                    include("kategori.php");
                     break;
                 default:
                     echo "Selamat Datang " . (isset($_SESSION['loginadminnama']) ? $_SESSION['loginadminnama'] : '') . " ";

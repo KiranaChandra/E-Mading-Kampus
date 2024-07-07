@@ -104,8 +104,8 @@ if (isset($_GET['act'])) {
                 <div class="w20 fl">' . $r['nama'] . '</div>
                 <div class="w20 fl">' . $r['email'] . '</div>
                 <div class="w20 fl">
-                    <a href="?mod=useradmin&act=edit&id=' . $r['ID'] . '" class="small">EDIT</a> 
-                    <a href="?mod=useradmin&act=hapus&id=' . $r['ID'] . '" class="small">HAPUS</a>
+                    <a href="?mod=useradmin&act=edit&id=' . $r['ID'] . '" class="btn btn-primary small">Edit</a> 
+                    <a href="?mod=useradmin&act=hapus&id=' . $r['ID'] . '" class="smbtn btn-red small">Hapus</a>
                 </div>
                 <div class="clear"></div>
             </div>
