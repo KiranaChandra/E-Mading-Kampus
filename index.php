@@ -1,19 +1,19 @@
 <?php 
 include("header.php");
 ?>
-    <div class="pd10">
-        <?php
-            $open = $_GET['open'];
-            switch ($open) {
-                case 'berita':
-                    include("berita.php");
-                    break; 
+<div class="pt10">
+     <?php
+        $open = $_GET['open'];
+        switch ($open) {
+            case 'berita':
+                include("berita.php");
+                break; 
                 default:
-                    include("depan.php");
-                    break;
-            }
+                include("depan.php");
+                break;
+        }
         ?>
-    </div>
+</div> 
     
  <?php
 include("footer.php"); 
