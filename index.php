@@ -5,12 +5,12 @@ include("header.php");
      <?php
         $open = $_GET['open'];
         switch ($open) {
-            case 'berita':
+            case 'detail':
                 include("berita.php");
                 break; 
                 default:
                 include("depan.php");
-                break;
+                break;  
         }
         ?>
 </div> 
