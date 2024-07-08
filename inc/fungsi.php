@@ -1,4 +1,16 @@
 <?php
+include 'koneksi.php';
+function getprofilweb($Tax){
+    global $connect;
+    $hasil =  mysqli_query($connect,"SELECT*FROM konfigurasi WHERE Tax = '$Tax' ORDER BY ID DESC LIMIT 1 " );
+    while ($r =  mysqli_fetch_array($hasil))
+    {
+        return $r ['Isi'];
+    }
+}
+
+?>
+<?php
 function populer(){
     ?>
     <!-- Berita Populer -->

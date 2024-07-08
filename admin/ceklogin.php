@@ -1,7 +1,11 @@
 <?php
+include '../inc/fungsi.php';
 session_start();
-include("koneksi.php");
-
+if($_GET['keluar']=='yes'){
+session_destroy();
+header('Location:index.php');
+}
+include("../inc/koneksi.php");
 if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($connect, $_POST['username']);
     $password = mysqli_real_escape_string($connect, $_POST['password']);
@@ -46,7 +50,7 @@ if (empty($_SESSION['loginadmin'])) {
         <img src= "<?=URL_SITUS.PATH_LOGO.'/'.FILE_LOGO;?>"> 
         <!-- Tempat logo jika diperlukan -->
     </div>
-    <div class="clear"></DIV>
+    <div class="clear pd5"></DIV>
 
     <form action="" method="POST">
         <label>Username</label>
