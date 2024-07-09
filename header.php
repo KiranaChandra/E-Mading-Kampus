@@ -34,7 +34,7 @@ include("../inc/fungsi.php");
 
                 <form action="" method="GET" class="btn fr" style="margin-top:-5px; margin-right: -8px;">
                     <input type="text" name="key" placeholder="Cari..">
-                    <input type="submit" name="search" value="Cari">
+                    <input type="submit" name="open" value="Cari">
                 </form>
             </nav>
         </header>

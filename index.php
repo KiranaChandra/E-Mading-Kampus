@@ -6,8 +6,18 @@ include("header.php");
         $open = $_GET['open'];
         switch ($open) {
             case 'detail':
-                include("berita.php");
+                include("detail.php");
                 break; 
+
+                case 'cat':
+                    include("kategori.php");
+                    break;
+
+                case 'cari':
+                    include("cari.php");
+                    break;
+    
+
                 default:
                 include("depan.php");
                 break;  
